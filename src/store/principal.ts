@@ -25,7 +25,9 @@ export interface OtherProperties{
 
 export interface Product{
   cart: OtherProperties[],
+  favorits: OtherProperties[],
   addToCart: (id : OtherProperties) => void,
+  addToFavorits: (id : OtherProperties) => void,
   onIncrease: (id : OtherProperties) => void,
   onDecrease: (id : OtherProperties) => void,
   deleteProduct: (id : OtherProperties) => void,
@@ -50,6 +52,22 @@ const useProductStore = create<Product>((set, get)=>({
 
       else{
         return {cart: [...state.cart, {...item, quanty: 1}]}
+      }
+  }),
+
+
+  addToFavorits: (item : OtherProperties)=>
+    set((state) => {
+      const comparation = state.favorits.findIndex((product)=> product.id === item.id)
+
+      if(comparation !== -1){
+        const updateCart = [...state.favorits];
+        updateCart[comparation].quanty += 1;
+        return {favorits: updateCart};
+      }
+
+      else{
+        return {favorits: [...state.favorits, {...item, quanty: 1}]}
       }
   }),
 

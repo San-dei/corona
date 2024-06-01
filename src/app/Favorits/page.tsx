@@ -1,5 +1,10 @@
-export const page = () => {
-  return <div>page</div>;
+import Render_fav from "@/ul/(Favorits)/Render_fav";
+
+export const Favorits = () => {
+  return (
+    <>
+      <Render_fav/>
+    </>)
 };
 
-export default page;
+export default Favorits;

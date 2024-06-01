@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { Store } from "@/interfaces/barril";
-import AddToCart from "@/components/AddToCart";
 import Link from "next/link";
+import AddToCart from "../(Cart)/AddToCart";
 
 interface Props {
   newData: Store[];

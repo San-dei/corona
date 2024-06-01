@@ -3,6 +3,8 @@ import useProductStore from "@/store/principal"
 import Image from "next/image"
 import ProductQuanty from "./ProductQuanty"
 
+
+//muestra los productos comprados
 const ShowProductShopping = () => {
 
   const cart = useProductStore((state) => state.cart)

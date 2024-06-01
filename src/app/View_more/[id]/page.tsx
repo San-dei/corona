@@ -1,4 +1,5 @@
-import AddToCart from "@/components/AddToCart";
+
+import AddToCart from "@/ul/(Cart)/AddToCart";
 import Image from "next/image";
 import Link from "next/link";
 
