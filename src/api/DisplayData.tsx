@@ -21,6 +21,7 @@ const getData = async (): Promise<Store[]> => {
     const properties = response.map((item) => ({
       ...item,
       quanty: 1,
+      size:['XS','S','M','L','XL','XXL']
     }));
 
     return properties;
