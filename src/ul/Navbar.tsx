@@ -15,6 +15,8 @@ const Navbar: React.FC = ():JSX.Element => {
             <Link href='/About_us'><li>Sobre nosotros</li></Link>
             <Link href='/My_shopping'><li>Mis Compras</li></Link>
             <Link href='/Favorits'><li>Favoritos</li></Link>
+            <Link href='/Create_user'><li>Registrarse</li></Link>
+            <Link href='/Login'><li>Iniciar Sesion</li></Link>
             <NavSearch/>
           </ul>
         </nav>

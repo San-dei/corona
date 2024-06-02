@@ -1,0 +1,2 @@
+faltan las cookies y local storage
+faltan hacer las validaciones de registrarse antes de comprar
