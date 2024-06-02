@@ -1,15 +1,15 @@
-import Buy from "@/components/Buy"
-import ShowProductShopping from "@/ul/(Cart)/ShowProductShopping"
-import TotalOfAllProducts from "@/ul/(Cart)/TotalOfAllProducts"
+import ShowProductShopping from "@/ul/(Cart)/ShowProductShopping";
 
-const page = () => {
+/**
+ * Retorna los elementos comprados.
+ * @returns {JSX.Element} - Retorna un elemento JSX.
+ */
+const My_shopping:React.FC = ():JSX.Element=> {
   return (
     <>
-      <ShowProductShopping/>
-      <TotalOfAllProducts/>
-      <Buy/>
+      <ShowProductShopping />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default My_shopping;

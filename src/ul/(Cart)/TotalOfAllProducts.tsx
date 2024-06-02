@@ -1,16 +1,22 @@
-'use client'
-import useProductStore from "@/store/principal"
+import useProductStore from "@/store/principal";
 
-const TotalOfAllProducts = () => {
-    const {cart} = useProductStore()
+/**
+ * Componente que muestra el total de todos los productos en el carrito.
+ * @returns {JSX.Element} - Retorna un elemento de JSX que muestra el total de todos los productos.
+ */
+const TotalOfAllProducts:React.FC = () : JSX.Element => {
 
-    const viewTotal = cart.reduce((acc,preValue) => acc + preValue.price * preValue.quanty, 0);
+    const { cart } = useProductStore();
+    
+    const viewTotal = cart.reduce((acc, preValue) => acc + preValue.price * preValue.quanty, 0);
+
     const fixNumber = viewTotal.toFixed(2);
-  return (
-    <>
-      Total: {fixNumber}
-    </>
-  )
+
+    return (
+        <>
+            Total: {fixNumber}
+        </>
+    );
 }
 
-export default TotalOfAllProducts
+export default TotalOfAllProducts;

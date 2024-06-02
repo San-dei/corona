@@ -1,7 +1,11 @@
-import NavSearch from "@/components/NavSearch"
-import Link from "next/link"
+import NavSearch from "@/components/NavSearch"; // Importa el componente NavSearch
+import Link from "next/link"; // Importa el componente Link de Next.js
 
-const Navbar : React.FC = () => {
+/**
+ * Componente que representa la barra de navegación.
+ * @returns {JSX.Element} - Retorna un elemento de JSX que representa la barra de navegación.
+ */
+const Navbar: React.FC = ():JSX.Element => {
   return (
     <>
       <header>
@@ -16,7 +20,7 @@ const Navbar : React.FC = () => {
         </nav>
       </header>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

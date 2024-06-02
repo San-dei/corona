@@ -8,8 +8,12 @@ interface Props {
   newData: Store[];
 }
 
-//genera las cartas
-const GenerateData: React.FC<Props> = async ({ newData }) => {
+/**
+ * Genera la informacion de los productos en la pagina principal.
+ * @param {Store[]} newData - Parametro con todos las props resueltas en la API.
+ * @returns {Promise<JSX.Element>}
+ */
+const GenerateData: React.FC<Props> = async ({ newData }) : Promise<JSX.Element> => {
   return (
     <>
       {newData.map((item) => (

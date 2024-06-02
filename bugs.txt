@@ -1,2 +1,0 @@
-En la seccion mis compras, se puede seguir restando incluso numeros negativos y tener totales negativos.
-

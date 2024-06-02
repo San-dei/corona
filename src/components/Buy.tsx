@@ -1,8 +1,9 @@
-const Buy = () => {
+const Buy: React.FC = (): JSX.Element => {
   return (
     <>
-    <button>Comprar</button></>
-  )
-}
+      <button>Comprar</button>
+    </>
+  );
+};
 
-export default Buy
+export default Buy;

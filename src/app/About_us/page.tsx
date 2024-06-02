@@ -1,7 +1,10 @@
-const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+/**
+ * Retorna informacion en formato JSX.
+ * @returns {JSX.Element} - Retorna un elemento JSX.
+ */
 
-export default page
+const About_us:React.FC = ():JSX.Element => {
+  return <>page</>;
+};
+
+export default About_us;

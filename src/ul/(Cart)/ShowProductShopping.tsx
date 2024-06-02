@@ -1,25 +1,34 @@
 'use client'
-import useProductStore from "@/store/principal"
-import Image from "next/image"
-import ProductQuanty from "./ProductQuanty"
+import useProductStore from "@/store/principal"; // Importa el hook personalizado para el estado del almacén de productos
+import Image from "next/image"; // Importa la componente Image de Next.js
+import ProductQuanty from "./ProductQuanty"; // Importa el componente ProductQuanty
+import TotalOfAllProducts from "./TotalOfAllProducts"; // Importa el componente TotalOfAllProducts
+import Buy from "@/components/Buy"; // Importa el componente Buy
 
+/**
+ * Componente que muestra los productos comprados.
+ * @returns {JSX.Element} - Retorna un elemento de JSX que muestra los productos comprados.
+ */
+const ShowProductShopping:React.FC = () => {
+  const cart = useProductStore((state) => state.cart);
 
-//muestra los productos comprados
-const ShowProductShopping = () => {
-
-  const cart = useProductStore((state) => state.cart)
-  return (
+  // Verifica si el carrito está vacío
+  return cart.length <= 0 ? (
+    'El carro está vacío, aún no has comprado nada'
+  ) : (
     <>
-      {cart.map((item)=>(
+      {cart.map((item) => (
         <div key={item.id}>
-            <Image src={item.image} alt="product of the image" width={80} height={80}/><br/>
-            Articulo: {item.title}<br/>
-            Precio: {item.price}<br/>
-            <ProductQuanty item={item}/>
+          <Image src={item.image} alt="product of the image" width={80} height={80} /><br/>
+          Artículo: {item.title}<br/>
+          Precio: {item.price}<br/>
+          <ProductQuanty item={item}/>
+          <TotalOfAllProducts/>
+          <Buy/>
         </div>
       ))}
     </>
-  )
+  );
 }
 
-export default ShowProductShopping
+export default ShowProductShopping;

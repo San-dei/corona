@@ -1,127 +1,134 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
-export interface Rating{
-  rate:  number;
+// Interfaz para las calificaciones de los productos
+export interface Rating {
+  rate: number;
   count: number;
 }
 
-export enum Category{
+// Enumeración para las categorías de los productos
+export enum Category {
   Electronics = "electronics",
   Jewelery = "jewelery",
   MenSClothing = "men's clothing",
   WomenSClothing = "women's clothing",
 }
 
-export interface OtherProperties{
-  id:          number;
-  title:       string;
-  price:       number;
+// Interfaz para las propiedades adicionales de los productos
+export interface OtherProperties {
+  id: number;
+  title: string;
+  price: number;
   description: string;
-  category:    Category;
-  image:       string;
-  rating:      Rating;
-  quanty:      number;
+  category: Category;
+  image: string;
+  rating: Rating;
+  quanty: number;
 }
 
-export interface Product{
-  cart: OtherProperties[],
-  favorits: OtherProperties[],
-  addToCart: (id : OtherProperties) => void,
-  addToFavorits: (id : OtherProperties) => void,
-  onIncrease: (id : OtherProperties) => void,
-  onDecrease: (id : OtherProperties) => void,
-  deleteProduct: (id : OtherProperties) => void,
-  totalProduct: () => number,
+// Interfaz para el estado del almacén de productos
+export interface Product {
+  cart: OtherProperties[];
+  favorits: OtherProperties[];
+  addToCart: (id: OtherProperties) => void;
+  addToFavorits: (id: OtherProperties) => void;
+  deleteFavorits: (id: OtherProperties) => void;
+  onIncrease: (id: OtherProperties) => void;
+  onDecrease: (id: OtherProperties) => void;
+  deleteProduct: (id: OtherProperties) => void;
+  totalProduct: () => number;
 }
 
-const useProductStore = create<Product>((set, get)=>({
-  cart:[],
+// Hook personalizado para gestionar el estado del almacén de productos
+const useProductStore = create<Product>((set, get) => ({
+  cart: [],
+  favorits: [],
 
-  favorits:[],
-
-
-  addToCart: (item : OtherProperties)=>
+  addToCart: (item: OtherProperties) =>
     set((state) => {
-      const comparation = state.cart.findIndex((product)=> product.id === item.id)
+      const comparison = state.cart.findIndex(
+        (product) => product.id === item.id
+      );
 
-      if(comparation !== -1){
-        const updateCart = [...state.cart];
-        updateCart[comparation].quanty += 1;
-        return {cart: updateCart};
+      if (comparison !== -1) {
+        const updatedCart = [...state.cart];
+        updatedCart[comparison].quanty += 1;
+        return { cart: updatedCart };
+      } else {
+        return { cart: [...state.cart, { ...item, quanty: 1 }] };
       }
+    }),
 
-      else{
-        return {cart: [...state.cart, {...item, quanty: 1}]}
-      }
-  }),
-
-
-  addToFavorits: (item : OtherProperties)=>
+  addToFavorits: (item: OtherProperties) =>
     set((state) => {
-      const comparation = state.favorits.findIndex((product)=> product.id === item.id)
+      const comparison = state.favorits.findIndex(
+        (product) => product.id === item.id
+      );
 
-      if(comparation !== -1){
-        const updateCart = [...state.favorits];
-        updateCart[comparation].quanty += 1;
-        return {favorits: updateCart};
+      if (comparison !== -1) {
+        const updatedFavorits = [...state.favorits];
+        updatedFavorits[comparison].quanty += 1;
+        return { favorits: updatedFavorits };
+      } else {
+        return { favorits: [...state.favorits, { ...item, quanty: 1 }] };
       }
+    }),
 
-      else{
-        return {favorits: [...state.favorits, {...item, quanty: 1}]}
+
+    deleteFavorits: (item: OtherProperties) =>
+      set((state) => {
+        return {
+          favorits: state.favorits.filter((product) => product.id !== item.id),
+        };
+      }),
+
+  onIncrease: (quanty: OtherProperties) =>
+    set((state) => {
+      const comparison = state.cart.find((item) => item.id === quanty.id);
+
+      if (comparison) {
+        return {
+          cart: state.cart.map((product) =>
+            product.id === quanty.id
+              ? { ...product, quanty: product.quanty + 1 }
+              : product
+          ),
+        };
+      } else {
+        return { cart: [...state.cart, { ...quanty, quanty: 1 }] };
       }
-  }),
+    }),
 
+  onDecrease: (quanty: OtherProperties) =>
+    set((state) => {
+      const comparison = state.cart.find((product) => product.id === quanty.id);
 
-  onIncrease: (quanty : OtherProperties)=>
-    set((state)=>{
-      const comparation = state.cart.find(item => item.id === quanty.id);
-
-      if(comparation){
-        return{
-          cart: state.cart.map(product => 
-            product.id === quanty.id ? {...product, quanty: product.quanty + 1} : product
-          )
+      if (comparison) {
+        return {
+          cart: state.cart.map((product) =>
+            product.id === quanty.id
+              ? { ...product, quanty: product.quanty - 1 }
+              : product
+          ),
+        };
+      } else {
+        return {
+          cart: [...state.cart, { ...quanty, quanty: 1 }],
         };
       }
+    }),
 
-      else{
-        return { cart: [...state.cart, {...quanty, quanty: 1}] }
-      }
-  }),
-
-
-  onDecrease: (quanty : OtherProperties) => 
-    set((state)=>{
-    const comparation = state.cart.find( product => product.id === quanty.id);
-
-    if(comparation){
-      return{
-        cart: state.cart.map( product => 
-          product.id === quanty.id ? {...product, quanty: product.quanty - 1} : product
-        )
-      }
-    }
-
-    else{
+  deleteProduct: (item: OtherProperties) =>
+    set((state) => {
       return {
-        cart: [...state.cart, {...quanty, quanty: 1}]
-      }
-    }
-  }),
-
-
-  deleteProduct: (item : OtherProperties)=>set((state)=>{
-    return{
-      cart: state.cart.filter(product => product.id !== item.id)
-    }
-  }),
-
+        cart: state.cart.filter((product) => product.id !== item.id),
+      };
+    }),
 
   totalProduct: () => {
     const cart = get().cart;
     return cart.reduce((total, item) => total + item.price * item.quanty, 0);
   },
-
-}))
+}));
 
 export default useProductStore;
