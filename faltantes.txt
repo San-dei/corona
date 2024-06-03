@@ -1,3 +1,6 @@
 faltan las cookies y local storage
 faltan hacer las validaciones de registrarse antes de comprar
 agregar los componentes 'error'
+Agregar los los talles de ropa
+hacer filtro por categoria 
+customizar las advertencias del formulario

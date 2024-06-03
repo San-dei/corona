@@ -106,7 +106,7 @@ const useProductStore = create<Product>((set, get) => ({
       if (comparison) {
         return {
           cart: state.cart.map((product) =>
-            product.id === quanty.id
+            product.id === quanty.id && product.quanty > 1
               ? { ...product, quanty: product.quanty - 1 }
               : product
           ),

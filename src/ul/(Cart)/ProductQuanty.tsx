@@ -15,7 +15,7 @@ const ProductQuanty: React.FC<Props> = ({ item }):JSX.Element => {
   const onDecrease = useProductStore((state) => state.onDecrease);
   const deleteProduct = useProductStore((state) => state.deleteProduct);
 
-  return (
+  return (<>
     <>
       <button onClick={() => onIncrease(item)}>+</button>
 
@@ -24,7 +24,7 @@ const ProductQuanty: React.FC<Props> = ({ item }):JSX.Element => {
       <button onClick={() => onDecrease(item)}>-</button>
       <button onClick={() => deleteProduct(item)}>Eliminar</button>
     </>
-  );
+    </>);
 };
 
 export default ProductQuanty;
