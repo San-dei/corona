@@ -1,78 +1,43 @@
 'use client'
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Importa useRouter de Next.js
 import Link from 'next/link';
 
-/**
- * Componente de inicio de sesión que maneja la autenticación del usuario.
- * @returns {JSX.Element} - El formulario de inicio de sesión y la lógica de autenticación.
- */
-const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const router = useRouter();
+const Login = () => {
+  const router = useRouter(); // Crea una instancia de useRouter
+  const [credentials, setCredentials] = useState({
+    email: '',
+    contrasena: '',
+  });
 
-  /**
-   * Maneja el proceso de inicio de sesión.
-   * Envía los datos al servidor y maneja la respuesta.
-   */
-  const handleLogin = async () => {
-    // Validación básica en el cliente
-    if (!username || !password) {
-      setError('Username and Password are required');
-      return;
-    }
-
-    try {
-      // Envío de la solicitud de inicio de sesión al servidor
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-
-      if (response.ok) {
-        // Manejo de la respuesta exitosa y almacenamiento del token en una cookie
-        const { token } = await response.json();
-        document.cookie = `authToken=${token}; path=/; secure; httponly; samesite=strict`;
-        // Redirección a la página protegida
-        router.push('/dashboard');
-      } else {
-        // Manejo de errores de autenticación
-        setError('Login failed. Please check your credentials and try again.');
-      }
-    } catch (err) {
-      // Manejo de errores de red u otros
-      setError('An error occurred. Please try again later.');
-    }
+  const handleChange = (e:any) => {
+    const { id, value } = e.target;
+    setCredentials({ ...credentials, [id]: value });
   };
 
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser.email === credentials.email && storedUser.contrasena === credentials.contrasena) {
+      alert('Inicio de sesión exitoso');
+      router.push('/User_profile'); // Redirige al perfil del usuario
+    } else {
+      alert('Credenciales incorrectas');
+    }
+  };
   return (
     <>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input 
-          type="text" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)} 
-          placeholder="Email" 
-          id="email" 
-        />
-
-        <label htmlFor="contrasena">Contraseña</label>
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Contraseña" 
-          id="contrasena" 
-        />
-      </div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
-        <button type="submit" onClick={handleLogin}>Enviar</button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email" placeholder="Email" onChange={handleChange} />
+          <label htmlFor="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" placeholder="Contraseña" onChange={handleChange} />
+        </div>
+        <div>
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
       <div>
         <Link href="/Forget_password">Olvidé mi contraseña</Link>
       </div>

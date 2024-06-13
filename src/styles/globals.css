@@ -1,0 +1,14 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+   outline: 1px solid red;
+  border-radius: 3px;
+}
+
+:root{
+  --negro: #010101;
+  --gris-claro: #f2f0ea;
+  --gris-oscuro: #a4a4a4;
+  --amarilo: #edcf5d;
+}

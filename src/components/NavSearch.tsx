@@ -3,6 +3,7 @@ import { OtherProperties } from "@/store/principal";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, ChangeEvent } from "react";
+import styles from "../styles/navsearch.module.css"
 
 /**
  * Componente de barra de búsqueda para la navegación.
@@ -53,6 +54,7 @@ const NavSearch: React.FC = (): JSX.Element => {
         placeholder="Buscar..."
         onChange={handleChange}
         value={search}
+        className={styles.navsearch_input}
       />
 
       {showResults.map((item, index) => (

@@ -1,6 +1,9 @@
 "use client";
 import { Store } from "@/interfaces/barril";
 import useProductStore from "@/store/principal";
+import { IoIosStar } from "react-icons/io";
+import { FaCartPlus } from "react-icons/fa";
+import styles from "../../styles/addtocart.module.css";
 
 interface Props {
   item: Store;
@@ -16,8 +19,18 @@ const AddToCart: React.FC<Props> = ({ item }): JSX.Element => {
   const addToProductFavortis = useProductStore((state) => state.addToFavorits);
   return (
     <>
-      <button onClick={() => addToProductCart(item)}>Agregar al carro</button>
-      <button onClick={() => addToProductFavortis(item)}>❤️</button>
+      <button
+        onClick={() => addToProductCart(item)}
+        className={styles.button_agregar}
+      >
+        Agregar <FaCartPlus />
+      </button>
+      <button
+        onClick={() => addToProductFavortis(item)}
+        className={styles.button_favoritos}
+      >
+      Favorito <IoIosStar />
+      </button>
     </>
   );
 };

@@ -1,0 +1,11 @@
+.navsearch_input{
+  border-radius: 5px;
+  border: .1px solid var(--gris-oscuro);
+  height: 2rem;
+  width: 10rem;
+  transition: width 0.2s ease-in;
+}
+
+.navsearch_input:hover{
+  width: 12rem;
+}
