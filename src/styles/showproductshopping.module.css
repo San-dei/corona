@@ -1,0 +1,93 @@
+.product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: 8px;
+  background-color: var(--gris-claro);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.product_info {
+  margin-left: 20px;
+  font-size: 16px;
+  color: var(--negro);
+}
+
+.product_descripcion {
+  margin-bottom: 10px;
+  color: var(--negro);
+}
+
+.product_conteiner {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.product_quanty {
+  background-color: var(--negro);
+  color: var(--gris-claro);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.product_quanty:hover {
+  background-color: var(--gris-oscuro);
+}
+
+.product_number {
+  font-size: 16px;
+  color: var(--negro);
+  margin: 0 10px;
+}
+
+.product_delete {
+  background-color: var(--negro);
+  color: var(--gris-claro);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product_delete:hover {
+  background-color: var(--gris-oscuro);
+}
+
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--gris-claro);
+  border: 1px solid var(--gris-oscuro);
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgb(36, 24, 24);
+}
+
+.total_result {
+  font-size: 18px;
+  color: var(--negro);
+}
+
+.buy {
+  background-color: var(--negro);
+  color: var(--gris-claro);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy:hover {
+  background-color: var(--gris-oscuro);
+}

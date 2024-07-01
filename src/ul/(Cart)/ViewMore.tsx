@@ -4,7 +4,7 @@ import { Store } from "@/interfaces/barril";
 import useProductStore from "@/store/principal";
 import { IoIosStar } from "react-icons/io";
 import { FaCartPlus } from "react-icons/fa";
-import styles from "../../styles/addtocart.module.css";
+import styles from "../../styles/viewmore.module.css";
 import Alert from '@/components/Alert'; // Importa el componente Alert
 
 interface Props {
@@ -16,9 +16,9 @@ interface Props {
  * @param {Store} - Admite strings y numeros
  * @returns {JSX.Element} - Retorna un elemento de JSX
  */
-const AddToCart: React.FC<Props> = ({ item }): JSX.Element => {
+const Viewmore: React.FC<Props> = ({ item }): JSX.Element => {
   const addToProductCart = useProductStore((state) => state.addToCart);
-  const addToProductFavorits = useProductStore((state) => state.addToFavorits);
+  const addToProductFavortis = useProductStore((state) => state.addToFavorits);
 
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -28,7 +28,7 @@ const AddToCart: React.FC<Props> = ({ item }): JSX.Element => {
     setAlertVisible(true);
     setTimeout(() => {
       setAlertVisible(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -36,26 +36,28 @@ const AddToCart: React.FC<Props> = ({ item }): JSX.Element => {
       {alertVisible && (
         <Alert message={alertMessage} onClose={() => setAlertVisible(false)} />
       )}
-      <button
-        onClick={() => {
-          addToProductCart(item);
-          showAlert("Producto añadido al carrito!");
-        }}
-        className={styles.button_agregar}
-      >
-        Agregar <FaCartPlus />
-      </button>
-      <button
-        onClick={() => {
-          addToProductFavorits(item);
-          showAlert("Producto añadido a favoritos!");
-        }}
-        className={styles.button_favoritos}
-      >
-        Favorito <IoIosStar />
-      </button>
+      <div className={styles.button_core}>
+        <button
+          onClick={() => {
+            addToProductCart(item);
+            showAlert("Producto añadido al carro!");
+          }}
+          className={styles.button_addagregar}
+        >
+          Agregar <FaCartPlus />
+        </button>
+        <button
+          onClick={() => {
+            addToProductFavortis(item);
+            showAlert("Producto añadido a favoritos!");
+          }}
+          className={styles.button_addfavoritos}
+        >
+          Favorito <IoIosStar />
+        </button>
+      </div>
     </>
   );
 };
 
-export default AddToCart;
+export default Viewmore;

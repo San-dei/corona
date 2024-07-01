@@ -5,6 +5,7 @@ import ProductQuanty from "./ProductQuanty"; // Importa el componente ProductQua
 import TotalOfAllProducts from "./TotalOfAllProducts"; // Importa el componente TotalOfAllProducts
 import Buy from "@/components/Buy"; // Importa el componente Buy
 import Link from "next/link";
+import styles from "../../styles/showproductshopping.module.css";
 
 /**
  * Componente que muestra los productos comprados.
@@ -25,22 +26,25 @@ const ShowProductShopping: React.FC = () => {
     <>
       {cart.map((item) => (
         <div key={item.id}>
-          <Image
-            src={item.image}
-            alt="product of the image"
-            width={80}
-            height={80}
-          />
-          <br />
-          Artículo: {item.title}
-          <br />
-          Precio: {item.price}
-          <br />
-          <ProductQuanty item={item} />
-          <TotalOfAllProducts />
-          <Buy />
+          <div className={styles.product}>
+            <Image
+              src={item.image}
+              alt="product of the image"
+              width={80}
+              height={80}
+            />
+            <div className={styles.product_info}>
+              <br />
+              <div className={styles.product_descripcion}>Artículo: {item.title}</div>
+              <br />
+              <div className={styles.product_descripcion}>Precio: {item.price}</div>
+              <br />
+            </div>
+            <ProductQuanty item={item} />
+          </div>
         </div>
       ))}
+    <TotalOfAllProducts />
     </>
   );
 };

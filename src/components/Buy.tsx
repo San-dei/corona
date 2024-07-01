@@ -1,7 +1,9 @@
+import styles from "../styles/showproductshopping.module.css";
+
 const Buy: React.FC = (): JSX.Element => {
   return (
     <>
-      <button>Comprar</button>
+      <button className={styles.buy}>Comprar</button>
     </>
   );
 };

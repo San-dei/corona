@@ -14,7 +14,7 @@
   flex-direction: column;
   border-radius: 5px;
   width: 50vw;
-  height: 17rem;
+  height: 18rem;
   margin: 0.5rem;
   border: .1px solid var(--gris-oscuro);
 }
@@ -31,4 +31,9 @@
 
 .card_buttons{
   margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+

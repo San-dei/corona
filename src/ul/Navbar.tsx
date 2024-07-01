@@ -5,12 +5,25 @@ import { useState } from "react";
 import styles from "../styles/menu.module.css";
 import { RiAlignJustify } from "react-icons/ri";
 import { satoshi_medium } from "@/config/fonts";
+import useProductStore from "@/store/principal";
+
 
 /**
  * Componente que representa la barra de navegación.
  * @returns {JSX.Element} - Retorna un elemento de JSX que representa la barra de navegación.
  */
 const Navbar: React.FC = (): JSX.Element => {
+  const {cart} = useProductStore()
+  const {favorits} = useProductStore()
+  
+  let count = cart.reduce((acc,preValue)=> acc + preValue.quanty, 0);
+  let comprobation = cart.length !== 0 ? ('('+count+')' ) : '';
+
+  let favorito = favorits.length;
+  let otherComprobation = favorits.length !== 0 ? favorito : ''
+  
+  
+
   const [menu, setMenu] = useState(false);
   const toggleMenu = () => {
     setMenu(!menu);
@@ -49,13 +62,13 @@ const Navbar: React.FC = (): JSX.Element => {
                 </Link>
               </li>
               <li className={styles.Cabezera_li}>
-                <Link href="/My_shopping" className={styles.Cabezera_a}>
+                {comprobation} <Link href="/My_shopping" className={styles.Cabezera_a}>
                   Mis Compras
                 </Link>
               </li>
               <li className={styles.Cabezera_li}>
                 <Link href="/Favorits" className={styles.Cabezera_a}>
-                  Favoritos
+                {otherComprobation} Favoritos
                 </Link>
               </li>
               <li className={styles.Cabezera_li}>

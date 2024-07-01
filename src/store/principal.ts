@@ -59,21 +59,18 @@ const useProductStore = create<Product>((set, get) => ({
       }
     }),
 
-  addToFavorits: (item: OtherProperties) =>
-    set((state) => {
-      const comparison = state.favorits.findIndex(
-        (product) => product.id === item.id
-      );
-
-      if (comparison !== -1) {
-        const updatedFavorits = [...state.favorits];
-        updatedFavorits[comparison].quanty += 1;
-        return { favorits: updatedFavorits };
-      } else {
-        return { favorits: [...state.favorits, { ...item, quanty: 1 }] };
-      }
-    }),
-
+    addToFavorits: (item: OtherProperties) =>
+      set((state) => {
+        const isFavorit = state.favorits.some(
+          (product) => product.id === item.id
+        );
+  
+        if (!isFavorit) {
+          return { favorits: [...state.favorits, { ...item, quanty: 1 }] };
+        } else {
+          return state;
+        }
+      }),
 
     deleteFavorits: (item: OtherProperties) =>
       set((state) => {

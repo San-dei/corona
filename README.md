@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proyecto E-commerce 2
 
-## Getting Started
+Este es un proyecto de e-commerce desarrollado con Next.js, React y TypeScript. La versión actual es la 0.1.0.
 
-First, run the development server:
+## Requisitos previos
 
-```bash
+Asegúrate de tener instalado Node.js (versión 14 o superior) y npm (versión 6 o superior) en tu máquina. Puedes descargarlos desde [nodejs.org](https://nodejs.org/).
+
+## Instalación
+
+Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
+
+1. **Clonar el repositorio**
+
+   ```bash
+   git clone https://github.com/tu-usuario/ecommerce_2.git
+   cd ecommerce_2
+
+
+
+
+## Dependencias
+
+1. **Instalar dependencias**
+
+npm install
+
+
+
+
+## Escripts disponibles
+
+En el archivo package.json se definen varios scripts útiles para el desarrollo y despliegue del proyecto. Aquí tienes una descripción de cada uno:
+
+npm run dev: Inicia el servidor de desarrollo.
+npm run build: Construye el proyecto para producción.
+npm run start: Inicia la aplicación en modo producción.
+npm run lint: Ejecuta ESLint para analizar el código en busca de problemas.
+npm run doc: Genera la documentación del proyecto utilizando JSDoc.
+
+
+
+## Ejecucion del proyecto
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esto iniciará la aplicación en http://localhost:3000. Abre tu navegador y visita esta URL para ver la aplicación en funcionamiento.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Construcción y despliegue
+Para construir el proyecto para producción, ejecuta:
 
-To learn more about Next.js, take a look at the following resources:
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Este comando generará una versión optimizada del proyecto en la carpeta .next. Luego, puedes iniciar la aplicación en modo producción con:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+npm run start
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Linter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Para analizar el código en busca de problemas, utiliza el siguiente comando:
+
+npm run lint
+
+
+
+## Generación de documentación
+
+Para generar la documentación del proyecto utilizando JSDoc, ejecuta:
+
+npm run doc
+
+

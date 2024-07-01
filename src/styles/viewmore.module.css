@@ -1,0 +1,79 @@
+.viewMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--gris-claro);
+}
+
+.viewMore_card {
+  background-color: var(--white);
+  border: 1px solid var(--negro);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 80%;
+}
+
+.viewMore_info {
+  margin-top: 20px;
+  font-size: 16px;
+  color: var(--negro);
+}
+
+.viewMore_description {
+  margin: 1rem 0;
+}
+
+.viewMore_price {
+  margin: 1rem 0;
+}
+
+.viewMore_buttons {
+  margin-top: 20px;
+}
+
+.viewMore_atras {
+  color: var(--negro);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.viewMore_atras:hover {
+  color: var(---negro);
+}
+
+.button_core{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button_addfavoritos,
+.button_addagregar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border: 0.1px solid var(--gris-oscuro);
+  height: 2rem;
+  width: 6rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.viewMore_svg_atras{
+  border-radius: 5px;
+  height: 1.6rem;
+  width: 1.6rem;
+  background-color: var(--gris-oscuro);
+}
+
+.viewMore_atras{
+  margin-left: 1rem;
+}
